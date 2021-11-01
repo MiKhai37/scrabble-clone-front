@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard } from './Pages';
+import { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard, NotFound } from './Pages';
 
 import MainLayout from './Components/MainLayout';
 
@@ -16,6 +16,7 @@ const App = () => {
           <Route exact path='/stats' component={Stats} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/gameboard' component={Gameboard} />
+          <Route component={NotFound} />
         </Switch>
       </MainLayout>
     </BrowserRouter>

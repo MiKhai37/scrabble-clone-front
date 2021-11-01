@@ -5,5 +5,6 @@ import Profile from './Profile';
 import Stats from './Stats';
 import Dashboard from './Dashboard';
 import Gameboard from './Gameboard';
+import NotFound from './NotFound';
 
-export { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard }
+export { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard, NotFound }
