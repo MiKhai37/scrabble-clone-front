@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Typography } from 'antd';
 
 const { Title, Text } = Typography;
-
+require('dotenv').config()
 const LoginPage = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const history = useHistory();
@@ -17,7 +17,7 @@ const LoginPage = () => {
     }
 
     try {
-      const res = await fetch('https://stark-crag-11618.herokuapp.com/login', {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
