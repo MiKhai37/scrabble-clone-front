@@ -10,11 +10,22 @@ const LoginPage = () => {
 
   const onFinish = async (values) => {
     setErrorMsg('');
+
+    const body = {
+      email: values.email,
+      password: values.password,
+    }
+
     try {
-      if (values.username === 'user1' && values.password === 'pass1') {
+      const res = await fetch('https://stark-crag-11618.herokuapp.com/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.status === 200) {
         history.push('/profile');
       } else {
-        throw new Error("Wrong combination of username/password");
+        throw new Error(await res.text());
       }
     } catch (error) {
       console.error('An unexpected error happened occurred:', error);
@@ -33,9 +44,9 @@ const LoginPage = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input />
         </Form.Item>

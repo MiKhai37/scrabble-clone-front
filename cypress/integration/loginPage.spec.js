@@ -2,6 +2,7 @@ describe('The Login Page', () => {
 
   before(() => {
     // run dev script to clean and seed the database with test users
+    cy.exec('npm run db:devReset && npm run db:devSeed')
   })
 
   beforeEach(() => {
@@ -11,11 +12,11 @@ describe('The Login Page', () => {
     cy.visit('/login')
   })
 
-  it('Successful login', () => {
-    const username = 'user1';
+  it.only('Successful login', () => {
+    const email = 'user1@like.com';
     const password = 'pass1';
 
-    cy.get('input[id=basic_username]').type(username);
+    cy.get('input[id=basic_email]').type(email);
 
     cy.get('input[id=basic_password]').type(password);
 
@@ -24,14 +25,14 @@ describe('The Login Page', () => {
     cy.url().should('include', '/profile');
 
     // Watch for session cookie
-    //cy.getCookie('scrabbleAuthToken').should('exist');
+    cy.getCookie('secret_token').should('exist');
   })
 
   it('Wrong password login', () => {
-    const username = 'user1';
+    const email = 'user1@like.com';
     const password = 'pass2';
 
-    cy.get('input[id=basic_username]').type(username);
+    cy.get('input[id=basic_email]').type(email);
 
     cy.get('input[id=basic_password]').type(password);
 
@@ -39,17 +40,17 @@ describe('The Login Page', () => {
 
     cy.url().should('include', '/login');
 
-    cy.contains('Wrong combination of username/password');
+    cy.contains('Wrong combination of email/password');
 
     // Watch for session cookie
-    cy.getCookie('scrabbleAuthToken').should('not.exist');
+    cy.getCookie('secret_token').should('not.exist');
   })
 
-  it('Wrong username login', () => {
-    const username = 'wronguser1';
+  it('Wrong email login', () => {
+    const email = 'user@like.com';
     const password = 'pass1';
 
-    cy.get('input[id=basic_username]').type(username);
+    cy.get('input[id=basic_email]').type(email);
 
     cy.get('input[id=basic_password]').type(password);
 
@@ -57,9 +58,9 @@ describe('The Login Page', () => {
 
     cy.url().should('include', '/login');
 
-    cy.contains('Wrong combination of username/password');
+    cy.contains('Wrong combination of email/password');
 
     // Watch for session cookie
-    cy.getCookie('likebookAuthToken').should('not.exist');
+    cy.getCookie('secret_token').should('not.exist');
   })
 })

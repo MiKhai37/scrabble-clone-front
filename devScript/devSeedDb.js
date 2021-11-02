@@ -1,7 +1,6 @@
 // This script seed the database with fake users, posts and comments
 require('dotenv').config();
 
-
 const async = require('async');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
@@ -15,19 +14,16 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 console.log('Database connection opened');
 
 const user1 = {
-  username: 'user1',
   email: 'user1@like.com',
   password: 'pass1',
 };
 
 const user2 = {
-  username: 'user2',
   email: 'user2@like.com',
   password: 'pass2',
 };
 
 const user3 = {
-  username: 'user3',
   email: 'user3@like.com',
   password: 'pass3',
 };
@@ -38,9 +34,8 @@ const createUser = async ({ username, email, password }, cb) => {
 
   const newUser = await new UserModel(
     {
-      username,
       email,
-      hash,
+      password: hash,
       creationTimestamp: new Date().getTime(),
     }
   )
