@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Typography } from 'antd';
 
 const { Title, Text } = Typography;
-require('dotenv').config()
+//require('dotenv').config()
 const LoginPage = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const history = useHistory();

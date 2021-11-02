@@ -10,11 +10,25 @@ const SignUpPage = () => {
 
   const onFinish = async (values) => {
     setErrorMsg('');
+
+    const body = {
+      email: values.email,
+      password: values.password,
+    }
+
     try {
-      if (values.password === values.confirmation) {
+      if (values.password !== values.confirmation) {
+        throw new Error('Password and confirmation do not match')
+      }
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.status === 200) {
         history.push('/login');
       } else {
-        throw new Error("The confirmation is wrong");
+        throw new Error(await res.text());
       }
     } catch (error) {
       console.error('An unexpected error happened occurred:', error);
@@ -33,9 +47,9 @@ const SignUpPage = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input />
         </Form.Item>
