@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Typography } from 'antd';
 
 const { Title, Text } = Typography;
-//require('dotenv').config()
+
+const baseBackendUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BACKEND_URL : 'http://localhost:5000'
+
 const LoginPage = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const history = useHistory();
@@ -17,11 +19,13 @@ const LoginPage = () => {
     }
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
+      const res = await fetch(
+        `${baseBackendUrl}/auth/login`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
       if (res.status === 200) {
         history.push('/profile');
       } else {

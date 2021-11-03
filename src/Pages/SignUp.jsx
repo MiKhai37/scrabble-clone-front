@@ -4,6 +4,8 @@ import { Form, Input, Button, Typography } from 'antd';
 
 const { Title, Text } = Typography;
 
+const baseBackendUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BACKEND_URL : 'http://localhost:5000'
+
 const SignUpPage = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const history = useHistory();
@@ -20,7 +22,7 @@ const SignUpPage = () => {
       if (values.password !== values.confirmation) {
         throw new Error('Password and confirmation do not match')
       }
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
+      const res = await fetch(`${baseBackendUrl}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
