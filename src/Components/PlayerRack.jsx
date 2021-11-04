@@ -3,7 +3,7 @@ import LetterTile from './LetterTile'
 
 const PlayerLetters = ({ letters }) => {
   return (
-    <div style={{ display: 'flex', margin: 30, border: '1px solid black' }}>
+    <div style={{ display: 'flex', margin: 30, border: '1px solid black', justifyContent: 'center' }}>
       {letters.map((letter, i) => {
         return (
           <div style={{ margin: 10 }} key={i}>

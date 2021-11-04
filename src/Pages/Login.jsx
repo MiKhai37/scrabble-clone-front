@@ -1,40 +1,26 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Typography } from 'antd';
+import { useAuth } from '../Auth/authContext';
+//import { useUser } from '../Auth/userContext';
 
 const { Title, Text } = Typography;
 
-const baseBackendUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BACKEND_URL : 'http://localhost:5000'
-
 const LoginPage = () => {
+  // eslint-disable-next-line
   const [errorMsg, setErrorMsg] = useState('');
-  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
 
+  useAuth().login(email, password)
+  
   const onFinish = async (values) => {
-    setErrorMsg('');
 
-    const body = {
-      email: values.email,
-      password: values.password,
-    }
+    setEmail(values.email);
+    setPassword(values.password);
+    console.log(email)
+    console.log(password)
 
-    try {
-      const res = await fetch(
-        `${baseBackendUrl}/auth/login`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
-        });
-      if (res.status === 200) {
-        history.push('/profile');
-      } else {
-        throw new Error(await res.text());
-      }
-    } catch (error) {
-      console.error('An unexpected error happened occurred:', error);
-      setErrorMsg(error.message);
-    }
   };
 
   return (

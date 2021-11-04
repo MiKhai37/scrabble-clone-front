@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cell = ({ letter }) => {
+const LetterTile = ({ letter }) => {
 
   return (
     <>
@@ -13,4 +13,4 @@ const Cell = ({ letter }) => {
   )
 }
 
-export default Cell
+export default LetterTile

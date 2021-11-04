@@ -13,8 +13,4 @@ const Cell = ({ letter }) => {
   )
 }
 
-export default Cell
-
-/* position: relative;
-top: 50%;
-transform: translateY(-50%); */
+export default Cell;
