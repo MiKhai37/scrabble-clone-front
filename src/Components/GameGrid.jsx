@@ -4,6 +4,8 @@ import Cell from './Cell';
 const GameGrid = ({ letters }) => {
 
   return (
+    <table>
+      <tbody>
     <tr style={{ border: '1px' }}>
       {letters.map((row, x) => {
         return (
@@ -17,6 +19,8 @@ const GameGrid = ({ letters }) => {
         )
       })}
     </tr>
+    </tbody>
+    </table>
   )
 }
 

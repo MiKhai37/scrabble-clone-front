@@ -20,7 +20,7 @@ const MainLayout = ({ children }) => {
     <>
       <Layout style={{ minHeight: '100vh' }}>
         <Header className="site-layout-background" style={{ padding: 0, textAlign: 'center' }}>
-          <Title level={2} type='warning'>Web App Scrabble</Title>
+          <Title level={2} type='warning'>Web App Scrabble ({process.env.NODE_ENV})</Title>
         </Header>
         <Layout className="site-layout">
           <Content style={{ margin: '16px' }}>

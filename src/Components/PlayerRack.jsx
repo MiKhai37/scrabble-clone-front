@@ -1,12 +1,14 @@
 import React from 'react';
-import Cell from './Cell';
+import LetterTile from './LetterTile'
 
 const PlayerLetters = ({ letters }) => {
   return (
-    <div style={{ display: 'flex', margin: 30 }}>
-      {letters.map(letter => {
+    <div style={{ display: 'flex', margin: 30, border: '1px solid black' }}>
+      {letters.map((letter, i) => {
         return (
-          <Cell letter={letter} style={{ margin: 45 }} />
+          <div style={{ margin: 10 }} key={i}>
+            <LetterTile letter={letter} order={i}/>
+          </div>
         )
       })}
     </div>

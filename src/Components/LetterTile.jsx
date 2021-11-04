@@ -4,9 +4,9 @@ const Cell = ({ letter }) => {
 
   return (
     <>
-      <div style={{ padding: 0, margin: -1, height: 45, width: 45, border: '1px solid black' }}>
+      <div style={{ padding: 0, margin: -1, height: 45, width: 45, border: '1px solid black', borderRadius: 5 }}>
         <div style={{ position: 'relative', float: 'left', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', userSelect: 'none' }}>
-          {/* {letter} */}
+          {letter}
         </div>
       </div>
     </>
@@ -14,7 +14,3 @@ const Cell = ({ letter }) => {
 }
 
 export default Cell
-
-/* position: relative;
-top: 50%;
-transform: translateY(-50%); */

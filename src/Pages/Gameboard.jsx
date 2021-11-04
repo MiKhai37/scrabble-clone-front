@@ -15,8 +15,10 @@ const GameboardPage = () => {
   return (
     <>
       <Title>Gameboard</Title>
+      <div style={{margin: 30}}>
       <GameGrid letters={letters} />
-      <PlayerRack letters={playersLetters}/>
+      <PlayerRack letters={playersLetters} />
+      </div>
     </>
   )
 }
