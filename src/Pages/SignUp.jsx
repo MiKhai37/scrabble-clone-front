@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Typography } from 'antd';
-import { useAuth } from '../Auth/authContext';
+
 
 const { Title, Text } = Typography;
 
 const SignUpPage = () => {
+
   const [errorMsg, setErrorMsg] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
 
-  useAuth().signup(email, password)
+  
+
 
   const onFinish = async (values) => {
 

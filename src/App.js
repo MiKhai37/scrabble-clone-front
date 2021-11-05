@@ -2,13 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard, NotFound } from './Pages';
 import MainLayout from './Components/MainLayout';
-import AppProviders from './Auth/AppProviders';
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-        <AppProviders>
           <MainLayout>
             <Switch>
               <Route exact path='/' component={Home} />
@@ -21,7 +19,6 @@ const App = () => {
               <Route component={NotFound} />
             </Switch>
           </MainLayout>
-        </AppProviders>
       </BrowserRouter>
     </>
   );

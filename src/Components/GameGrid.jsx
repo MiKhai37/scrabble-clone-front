@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Cell from './Cell';
 
 const GameGrid = ({ letters }) => {
+  const [currentCell, setCurrentCell] = useState(null)
+
+  useEffect(() => {
+
+    const cells = document.querySelectorAll('.cell')
+
+    console.log(cells)
+
+    cells.forEach(cell => {
+      cell.addEventListener('click',() => {
+        console.log('click');
+        console.log(cell.getAttribute('coords'));
+        cell.classList.toggle('selected')
+        setCurrentCell(cell.getAttribute('coords'))
+      })
+    })
+    
+
+  }, [])
 
   return (
     <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -13,7 +32,7 @@ const GameGrid = ({ letters }) => {
                 <td key={x} style={{ border: '1px' }}>
                   {row.map((letter, y) => {
                     return (
-                      <Cell letter={letter} key={`${x}-${y}-${letter}`} />
+                      <Cell className='cell' id={`cell-${x}-${y}`} letter={letter} coords={[x, y]} key={[x,y]}  />
                     )
                   })}
                 </td>

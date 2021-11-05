@@ -5,6 +5,7 @@ import { Layout, Menu, Typography } from 'antd';
 import {
   HomeOutlined,
   LoginOutlined,
+  LogoutOutlined,
   UserAddOutlined,
   UserOutlined,
   BarChartOutlined,
@@ -48,6 +49,10 @@ const SiderMenu = () => {
 
         <Menu.Item key="login" icon={<LoginOutlined />}>
           <Link to="/login">Login</Link>
+        </Menu.Item>
+
+        <Menu.Item key="logout" icon={<LogoutOutlined />}>
+          <Link>Logout</Link>
         </Menu.Item>
 
         <Menu.Item key="signup" icon={<UserAddOutlined />}>

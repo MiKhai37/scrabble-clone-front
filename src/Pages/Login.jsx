@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-//import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Typography } from 'antd';
-import { useAuth } from '../Auth/authContext';
-//import { useUser } from '../Auth/userContext';
+
 
 const { Title, Text } = Typography;
 
 const LoginPage = () => {
-  // eslint-disable-next-line
   const [errorMsg, setErrorMsg] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
 
-  useAuth().login(email, password)
-  
+
+    
+
+
+
   const onFinish = async (values) => {
 
     setEmail(values.email);
