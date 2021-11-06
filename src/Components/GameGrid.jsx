@@ -1,27 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Cell from './Cell';
 
 const GameGrid = ({ letters }) => {
-  // eslint-disable-next-line
-  const [currentCell, setCurrentCell] = useState(null)
-
-  useEffect(() => {
-
-    const cells = document.querySelectorAll('.cell')
-
-    console.log(cells)
-
-    cells.forEach(cell => {
-      cell.addEventListener('click',() => {
-        console.log('click');
-        console.log(cell.getAttribute('coords'));
-        cell.classList.toggle('selected')
-        setCurrentCell(cell.getAttribute('coords'))
-      })
-    })
-    
-
-  }, [])
 
   return (
     <div style={{display: 'flex', justifyContent: 'center'}}>
