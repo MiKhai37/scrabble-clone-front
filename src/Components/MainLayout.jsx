@@ -6,14 +6,11 @@ import AuthContext from '../Contexts/authContext';
 import {
   HomeOutlined,
   LoginOutlined,
-  LogoutOutlined,
-  KeyOutlined,
   UserAddOutlined,
-  UserOutlined,
-  BarChartOutlined,
   DashboardOutlined,
   PlayCircleOutlined
 } from '@ant-design/icons';
+import AuthenticationButton from './AuthenticationButton';
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -26,6 +23,7 @@ const MainLayout = ({ children }) => {
       <Layout style={{ minHeight: '100vh' }}>
         <Header className="site-layout-background" style={{ padding: 0, textAlign: 'center' }}>
           <Title level={2} type='warning'>Web App Scrabble ({process.env.NODE_ENV}) ({authContext.isLoggedIn ? 'Logged' : 'Not Logged'})</Title>
+          <AuthenticationButton />
         </Header>
         <Layout className="site-layout">
           <Content style={{ margin: '16px' }}>
@@ -33,10 +31,10 @@ const MainLayout = ({ children }) => {
           </Content>
           <Sider>
             {authContext.isLoggedIn
-            ?
-            <AuthSiderMenu />
-            :
-            <SiderMenu />}
+              ?
+              <AuthSiderMenu />
+              :
+              <SiderMenu />}
           </Sider>
         </Layout>
         <Footer style={{ textAlign: 'center', backgroundColor: 'gray' }}>Web App Scrabble</Footer>
@@ -53,22 +51,6 @@ const AuthSiderMenu = () => {
 
         <Menu.Item key="home" icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
-        </Menu.Item>
-
-        <Menu.Item key="logout" icon={<LogoutOutlined />}>
-          <Link to='/'>Logout</Link>
-        </Menu.Item>
-
-        <Menu.Item key="auth" icon={<KeyOutlined />}>
-          <Link to='/auth'>Authentication Page</Link>
-        </Menu.Item>
-
-        <Menu.Item key="profile" icon={<UserOutlined />}>
-          <Link to="/profile">Profile</Link>
-        </Menu.Item>
-
-        <Menu.Item key="stats" icon={<BarChartOutlined />}>
-          <Link to="/stats">Stats</Link>
         </Menu.Item>
 
         <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
@@ -96,10 +78,6 @@ const SiderMenu = () => {
 
         <Menu.Item key="login" icon={<LoginOutlined />}>
           <Link to="/login">Login</Link>
-        </Menu.Item>
-
-        <Menu.Item key="auth" icon={<KeyOutlined />}>
-          <Link to='/auth'>Authentication Page</Link>
         </Menu.Item>
 
         <Menu.Item key="signup" icon={<UserAddOutlined />}>

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard, TestAuth, NotFound, Authentication } from './Pages';
+import { Home, Login, SignUp, Dashboard, Gameboard, NotFound } from './Pages';
 import MainLayout from './Components/MainLayout';
 import AuthContext from './Contexts/authContext';
-import PublicRoute from '../src/Pages/PublicRoute';
-import PrivateRoute from '../src/Pages/PrivateRoute';
+import PrivateRoute from '../src/Components/PrivateRoute';
 
 let logoutTimer;
 
@@ -68,11 +67,8 @@ const App = () => {
               <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={SignUp} />
-              <PrivateRoute exact path='/profile' component={Profile} />
-              <PrivateRoute exact path='/stats' component={Stats} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/gameboard' component={Gameboard} />
-              <Route exact path='/auth' component={Authentication} />
               <Route component={NotFound} />
             </Switch>
           </MainLayout>
