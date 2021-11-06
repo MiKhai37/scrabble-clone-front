@@ -5,8 +5,11 @@ import { Form, Input, Button, Typography } from 'antd';
 const { Title, Text } = Typography;
 
 const LoginPage = () => {
+  // eslint-disable-next-line
   const [errorMsg, setErrorMsg] = useState('');
+  // eslint-disable-next-line
   const [email, setEmail] = useState('');
+  // eslint-disable-next-line
   const [password, setPassword] = useState('');
 
   const onFinish = async (values) => {

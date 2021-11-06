@@ -1,7 +1,7 @@
+// eslint-disable-next-line
 import React, { useEffect, useState } from 'react';
 
 const LetterTile = ({ letter, tileId }) => {
-  const [onBoard, setOnBoard] = useState(false);
 
   return (
     <>

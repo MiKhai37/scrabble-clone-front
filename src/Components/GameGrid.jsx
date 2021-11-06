@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Cell from './Cell';
 
 const GameGrid = ({ letters }) => {
+  // eslint-disable-next-line
   const [currentCell, setCurrentCell] = useState(null)
 
   useEffect(() => {

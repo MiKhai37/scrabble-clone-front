@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LetterTile from './LetterTile'
 
 const PlayerRack = ({ letters }) => {
+  // eslint-disable-next-line
   const [currentTile, setCurrentTile] = useState(null)
 
   useEffect(() => {

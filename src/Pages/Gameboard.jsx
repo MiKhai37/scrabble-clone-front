@@ -6,12 +6,13 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 
 const GameboardPage = () => {
+  
 
 
   const row = new Array(15).fill('_');
   const cells = new Array(15).fill(row);
 
-  const letterTile = new Array(7).fill('B');
+  const letterTile = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
   return (
     <>
