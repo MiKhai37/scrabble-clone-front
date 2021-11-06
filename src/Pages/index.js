@@ -5,6 +5,8 @@ import Profile from './Profile';
 import Stats from './Stats';
 import Dashboard from './Dashboard';
 import Gameboard from './Gameboard';
+import TestAuth from './TestAuthPage';
+import Authentication from './AuthenticationPage';
 import NotFound from './NotFound';
 
-export { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard, NotFound }
+export { Home, Login, SignUp, Profile, Stats, Dashboard, Gameboard, TestAuth, Authentication, NotFound }

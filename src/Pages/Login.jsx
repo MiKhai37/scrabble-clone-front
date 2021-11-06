@@ -7,19 +7,12 @@ const { Title, Text } = Typography;
 const LoginPage = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
-
-
-    
-
-
+  const [password, setPassword] = useState('');
 
   const onFinish = async (values) => {
 
     setEmail(values.email);
     setPassword(values.password);
-    console.log(email)
-    console.log(password)
 
   };
 
