@@ -61,6 +61,10 @@ const AuthSiderMenu = () => {
           <Link to="/gameboard">Gameboard</Link>
         </Menu.Item>
 
+        <Menu.Item key="socket" icon={<PlayCircleOutlined />}>
+          <Link to="/socket">Socket</Link>
+        </Menu.Item>
+
       </Menu>
     </>
   )

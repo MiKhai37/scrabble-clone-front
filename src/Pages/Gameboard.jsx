@@ -10,8 +10,9 @@ const cellss = new Array(15).fill(row);
 const letterTile = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
 const GameboardPage = () => {
-
+  // eslint-disable-next-line
   const [playerTiles, setPlayerTiles] = useState(letterTile);
+  // eslint-disable-next-line
   const [gbCells, setGbCells] = useState(cellss);
 
   const [errMsg, setErrMsg] = useState('');
@@ -19,23 +20,37 @@ const GameboardPage = () => {
   const [currentCell, setCurrentCell] = useState(null);
   const [lettersplayed, setLettersplayed] = useState([]);
   
-  
-  
   useEffect(() => {
     const tiles = document.querySelectorAll('.tile');
     const cells = document.querySelectorAll('.cell');
 
     // And new listeners
     tiles.forEach(tile => {
+      
       tile.addEventListener('click', () => selectTile(tile))
     })
 
     cells.forEach(cell => {
-      cell.addEventListener('click', () => selectCell(cell))
+      cell.addEventListener('click', () => {
+        setErrMsg('')
+        if (!currentTile) {
+          setErrMsg('select a tile');
+          return
+        }
+    
+        console.log('cell clicked');
+        console.log(cell.id);
+        console.log(cell.getAttribute('letter'));
+        cell.classList.toggle('selected');
+    
+        setCurrentCell(cell.id)
+    
+        setLettersplayed([...lettersplayed, currentTile])
+      })
     })
 
 
-  }, [currentTile, currentCell]);
+  }, [currentTile, currentCell, lettersplayed]);
 
   const selectTile = (tile) => {
     console.log('tile clicked');
@@ -44,24 +59,6 @@ const GameboardPage = () => {
     tile.classList.toggle('selected');
 
     setCurrentTile(`${tile.id}(${tile.getAttribute('letter')})`)
-  };
-
-  const selectCell = (cell) => {
-
-    setErrMsg('')
-    if (!currentTile) {
-      setErrMsg('select a tile');
-      return
-    }
-
-    console.log('cell clicked');
-    console.log(cell.id);
-    console.log(cell.getAttribute('letter'));
-    cell.classList.toggle('selected');
-
-    setCurrentCell(cell.id)
-
-    setLettersplayed([...lettersplayed, currentTile])
   };
 
   const handleSubmit = () => {

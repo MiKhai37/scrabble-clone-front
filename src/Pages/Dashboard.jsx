@@ -1,9 +1,12 @@
 import React from 'react'
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 const DashBoardPage = () => {
   return (
     <div>
-      Dashboard
+      <Title>Dashboard</Title>
     </div>
   )
 }

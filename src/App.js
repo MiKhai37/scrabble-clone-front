@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Home, Login, SignUp, Dashboard, Gameboard, NotFound } from './Pages';
+import { Home, Login, SignUp, Dashboard, Gameboard, NotFound, TestSocketIo } from './Pages';
 import MainLayout from './Components/MainLayout';
 import AuthContext from './Contexts/authContext';
 import PrivateRoute from '../src/Components/PrivateRoute';
@@ -69,6 +69,7 @@ const App = () => {
               <Route exact path='/signup' component={SignUp} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/gameboard' component={Gameboard} />
+              <PrivateRoute exact path='/socket' component={TestSocketIo} />
               <Route component={NotFound} />
             </Switch>
           </MainLayout>
