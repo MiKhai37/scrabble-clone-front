@@ -73,7 +73,7 @@ const GameboardPage = () => {
       })
     })
 
-  }, [currentTile, currentCell, lettersplayed]);
+  }, [currentTile, currentCell, toSubmit]);
 
 
   const handleSubmit = () => {
@@ -85,7 +85,7 @@ const GameboardPage = () => {
       <Title>Gameboard</Title>
       <p><Text>Current Tile: {currentTile?.id}, Current cell: {currentCell?.id}</Text></p>
       <p><Text type='danger'>{errMsg}</Text></p>
-      <p><Text type='success'>{lettersplayed}</Text></p>
+      <p><Text type='success'>{toSubmit}</Text></p>
       <Button onClick={handleSubmit}>Submit</Button>
       <div style={{}}>
         <GameGrid letters={gbCells} />

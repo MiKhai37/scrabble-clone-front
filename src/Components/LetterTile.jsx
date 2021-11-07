@@ -9,7 +9,7 @@ width: 40px;
 border: 1px solid black;
 border-radius: 5px;
 `;
-
+// eslint-disable-next-line
 const Letter = styled.div`
 position: relative;
 float: left;

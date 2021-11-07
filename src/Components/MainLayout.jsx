@@ -10,7 +10,6 @@ import {
   DashboardOutlined,
   PlayCircleOutlined
 } from '@ant-design/icons';
-import AuthenticationButton from './AuthenticationButton';
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -23,7 +22,6 @@ const MainLayout = ({ children }) => {
       <Layout style={{ minHeight: '100vh' }}>
         <Header className="site-layout-background" style={{ padding: 0, textAlign: 'center' }}>
           <Title level={2} type='warning'>Web App Scrabble ({process.env.NODE_ENV}) ({authContext.isLoggedIn ? 'Logged' : 'Not Logged'})</Title>
-          <AuthenticationButton />
         </Header>
         <Layout className="site-layout">
           <Content style={{ margin: '16px' }}>
@@ -44,7 +42,7 @@ const MainLayout = ({ children }) => {
 }
 
 const AuthSiderMenu = () => {
-
+  const authContext = useContext(AuthContext)
   return (
     <>
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
@@ -63,6 +61,10 @@ const AuthSiderMenu = () => {
 
         <Menu.Item key="socket" icon={<PlayCircleOutlined />}>
           <Link to="/socket">Socket</Link>
+        </Menu.Item>
+
+        <Menu.Item key="logout" onClick={() => authContext.logout()} icon={<PlayCircleOutlined />}>
+          Logout
         </Menu.Item>
 
       </Menu>

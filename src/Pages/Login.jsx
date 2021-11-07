@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Input, Button, Typography } from 'antd';
+import AuthContext from '../Contexts/authContext';
 
 
 const { Title, Text } = Typography;
 
 const LoginPage = () => {
+  const authContext = useContext(AuthContext);
   // eslint-disable-next-line
   const [errorMsg, setErrorMsg] = useState('');
   // eslint-disable-next-line
@@ -14,8 +16,9 @@ const LoginPage = () => {
 
   const onFinish = async (values) => {
 
-    setEmail(values.email);
-    setPassword(values.password);
+    console.log(values.email, values.password)
+
+    authContext.login(values.email, values.password)
 
   };
 
