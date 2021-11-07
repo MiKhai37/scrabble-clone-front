@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Input, Button, Typography } from 'antd';
+import AuthContext from '../Contexts/authContext';
 
 
 const { Title, Text } = Typography;
 
 const SignUpPage = () => {
+  const authContext = useContext(AuthContext);
   // eslint-disable-next-line
   const [errorMsg, setErrorMsg] = useState('');
-  // eslint-disable-next-line
-  const [email, setEmail] = useState('');
-  // eslint-disable-next-line
-  const [password, setPassword] = useState('')
 
   const onFinish = async (values) => {
-
-    setEmail(values.email);
-    setPassword(values.password);
-
+    const user = {
+      email: values.email,
+      username: values.username,
+      password: values.password
+    }
+    setErrorMsg(await authContext.signup(user))
   };
 
   return (
@@ -33,6 +33,14 @@ const SignUpPage = () => {
           label="Email"
           name="email"
           rules={[{ required: true, message: 'Please input your email!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input />
         </Form.Item>

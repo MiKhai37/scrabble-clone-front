@@ -7,7 +7,7 @@ const TestSocketIoPage = () => {
     <>
       {/* LOAD OR UNLOAD THE CLIENT */}
       <button onClick={() => setLoadClient(prevState => !prevState)}>
-        STOP CLIENT
+        {loadClient ? 'STOP CLIENT' : 'START CLIENT'}
       </button>
       {/* SOCKET IO CLIENT*/}
       {loadClient ? <ClientComponent /> : null}

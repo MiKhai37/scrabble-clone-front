@@ -6,9 +6,11 @@ import AuthContext from '../Contexts/authContext';
 import {
   HomeOutlined,
   LoginOutlined,
+  LogoutOutlined,
   UserAddOutlined,
   DashboardOutlined,
-  PlayCircleOutlined
+  PlayCircleOutlined,
+  CommentOutlined
 } from '@ant-design/icons';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -21,7 +23,7 @@ const MainLayout = ({ children }) => {
     <>
       <Layout style={{ minHeight: '100vh' }}>
         <Header className="site-layout-background" style={{ padding: 0, textAlign: 'center' }}>
-          <Title level={2} type='warning'>Web App Scrabble ({process.env.NODE_ENV}) ({authContext.isLoggedIn ? 'Logged' : 'Not Logged'})</Title>
+          <Title level={2} type='warning'>Web App Scrabble</Title>
         </Header>
         <Layout className="site-layout">
           <Content style={{ margin: '16px' }}>
@@ -59,11 +61,11 @@ const AuthSiderMenu = () => {
           <Link to="/gameboard">Gameboard</Link>
         </Menu.Item>
 
-        <Menu.Item key="socket" icon={<PlayCircleOutlined />}>
+        <Menu.Item key="socket" icon={<CommentOutlined />}>
           <Link to="/socket">Socket</Link>
         </Menu.Item>
 
-        <Menu.Item key="logout" onClick={() => authContext.logout()} icon={<PlayCircleOutlined />}>
+        <Menu.Item key="logout" onClick={() => authContext.logout()} icon={<LogoutOutlined />}>
           Logout
         </Menu.Item>
 

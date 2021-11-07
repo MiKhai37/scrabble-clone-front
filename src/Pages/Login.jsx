@@ -9,17 +9,13 @@ const LoginPage = () => {
   const authContext = useContext(AuthContext);
   // eslint-disable-next-line
   const [errorMsg, setErrorMsg] = useState('');
-  // eslint-disable-next-line
-  const [email, setEmail] = useState('');
-  // eslint-disable-next-line
-  const [password, setPassword] = useState('');
 
   const onFinish = async (values) => {
-
-    console.log(values.email, values.password)
-
-    authContext.login(values.email, values.password)
-
+    const user = {
+      email: values.email,
+      password: values.password
+    }
+    setErrorMsg(await authContext.login(user))
   };
 
   return (

@@ -64,7 +64,7 @@ const GameboardPage = () => {
         console.log(cellClone.id);
         console.log(cellClone.getAttribute('letter'));
         cellClone.setAttribute('letter', 'O')
-    
+
         setCurrentCell(cellClone)
     
         setToSubmit([...toSubmit, `${currentTile.id}(${cellClone.id})`])
@@ -83,7 +83,6 @@ const GameboardPage = () => {
   return (
     <>
       <Title>Gameboard</Title>
-      <p><Text>Current Tile: {currentTile?.id}, Current cell: {currentCell?.id}</Text></p>
       <p><Text type='danger'>{errMsg}</Text></p>
       <p><Text type='success'>{toSubmit}</Text></p>
       <Button onClick={handleSubmit}>Submit</Button>
