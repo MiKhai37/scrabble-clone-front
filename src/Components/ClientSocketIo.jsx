@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-const ENDPOINT = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BACKEND_URL : "http://localhost:5000";
+
+const backend_url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BACKEND_URL : "http://localhost:5000";
 
 const ClientComponent = () => {
   const [response, setResponse] = useState('');
   const [socketID, setSocketID] = useState('');
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
+    const socket = socketIOClient(backend_url);
     socket.on("FromAPI", data => {
       setResponse(data);
       setSocketID(socket.id)

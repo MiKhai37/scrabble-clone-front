@@ -14,52 +14,67 @@ const GameboardPage = () => {
   const [playerTiles, setPlayerTiles] = useState(letterTile);
   // eslint-disable-next-line
   const [gbCells, setGbCells] = useState(cellss);
-
+  
   const [errMsg, setErrMsg] = useState('');
   const [currentTile, setCurrentTile] = useState(null);
   const [currentCell, setCurrentCell] = useState(null);
-  const [lettersplayed, setLettersplayed] = useState([]);
+  const [toSubmit, setToSubmit] = useState([]);
   
   useEffect(() => {
+    
     const tiles = document.querySelectorAll('.tile');
     const cells = document.querySelectorAll('.cell');
 
-    // And new listeners
     tiles.forEach(tile => {
-      
-      tile.addEventListener('click', () => selectTile(tile))
+      // Avoid multiplication of event listeners, clone and replace
+      const tileClone = tile.cloneNode(true)
+      tile.parentNode.replaceChild(tileClone, tile)
+
+      tileClone.addEventListener('click', () => {
+
+        setErrMsg('')
+
+        if (tileClone?.id === currentTile?.id) {
+          setCurrentTile(null);
+          return;
+        }
+
+        console.log('tile clicked');
+        console.log(tileClone.id);
+        console.log(tileClone.getAttribute('letter'));
+    
+        setCurrentTile(tileClone)
+      })
+
     })
 
     cells.forEach(cell => {
-      cell.addEventListener('click', () => {
+      const cellClone = cell.cloneNode(true)
+      cell.parentNode.replaceChild(cellClone, cell)
+      
+      cellClone.addEventListener('click', () => {
+    
         setErrMsg('')
         if (!currentTile) {
-          setErrMsg('select a tile');
+          setErrMsg('Select a tile first!')
           return
         }
-    
+
         console.log('cell clicked');
-        console.log(cell.id);
-        console.log(cell.getAttribute('letter'));
-        cell.classList.toggle('selected');
+        console.log(cellClone.id);
+        console.log(cellClone.getAttribute('letter'));
+        cellClone.setAttribute('letter', 'O')
     
-        setCurrentCell(cell.id)
+        setCurrentCell(cellClone)
     
-        setLettersplayed([...lettersplayed, currentTile])
+        setToSubmit([...toSubmit, `${currentTile.id}(${cellClone.id})`])
+
+        setCurrentTile(null)
       })
     })
 
-
   }, [currentTile, currentCell, lettersplayed]);
 
-  const selectTile = (tile) => {
-    console.log('tile clicked');
-    console.log(tile.id);
-    console.log(tile.getAttribute('letter'));
-    tile.classList.toggle('selected');
-
-    setCurrentTile(`${tile.id}(${tile.getAttribute('letter')})`)
-  };
 
   const handleSubmit = () => {
     // Submit the letters to the server
@@ -67,9 +82,10 @@ const GameboardPage = () => {
 
   return (
     <>
-      <Title>Gameboard {lettersplayed}</Title>
-      <Text>Current Tile: {currentTile}, Current cell: {currentCell}</Text>
-      <Text type='danger'>{errMsg}</Text>
+      <Title>Gameboard</Title>
+      <p><Text>Current Tile: {currentTile?.id}, Current cell: {currentCell?.id}</Text></p>
+      <p><Text type='danger'>{errMsg}</Text></p>
+      <p><Text type='success'>{lettersplayed}</Text></p>
       <Button onClick={handleSubmit}>Submit</Button>
       <div style={{}}>
         <GameGrid letters={gbCells} />
