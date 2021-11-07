@@ -31,7 +31,7 @@ const App = () => {
     );
 
     if (!res.ok) {
-      return await res.text()
+      return await res.text();
     }
 
     const resJSON = await res.json()
