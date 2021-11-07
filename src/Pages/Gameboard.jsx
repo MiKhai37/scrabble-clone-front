@@ -6,14 +6,10 @@ import { Typography, Button } from 'antd';
 const { Title, Text } = Typography;
 
 const row = new Array(15).fill('_');
-const cellss = new Array(15).fill(row);
-const letterTile = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+const gridCells = new Array(15).fill(row);
+const playerTiles = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
 const GameboardPage = () => {
-  // eslint-disable-next-line
-  const [playerTiles, setPlayerTiles] = useState(letterTile);
-  // eslint-disable-next-line
-  const [gbCells, setGbCells] = useState(cellss);
   
   const [errMsg, setErrMsg] = useState('');
   const [currentTile, setCurrentTile] = useState(null);
@@ -110,7 +106,7 @@ const GameboardPage = () => {
       <p><Text type='success'>Coords: {toSubmit.coords.join(' / ')}</Text></p>
       <Button onClick={handleSubmit}>Submit</Button>
       <div style={{}}>
-        <GameGrid letters={gbCells} />
+        <GameGrid letters={gridCells} />
         <PlayerRack letters={playerTiles} />
       </div>
     </>

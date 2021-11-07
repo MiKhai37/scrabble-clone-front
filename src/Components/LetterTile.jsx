@@ -1,36 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import CenteredLetter from './CenteredLetter';
 
 const Tile = styled.div`
 padding: 0;
-margin: -1;
+margin: 10px;
 height: 40px;
 width: 40px;
 border: 1px solid black;
 border-radius: 5px;
 `;
 // eslint-disable-next-line
-const Letter = styled.div`
-position: relative;
-float: left;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+const SelectedTile = styled(Tile)`
+border: 2px solid black;
 `;
+
 
 const LetterTile = ({ letter, tileId }) => {
 
   return (
     <>
       <Tile className='tile' id={tileId}>
-        <div style={{ position: 'relative', float: 'left', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', userSelect: 'none' }}>
-          {letter}
-        </div>
+      <CenteredLetter letter={letter} />
       </Tile>
     </>
   )
 }
 
 export default LetterTile
-
-//className='tile' id={tileId} letter={letter} style={{ padding: 0, margin: -1, height: 40, width: 40, border: '1px solid black', borderRadius: 5 }}

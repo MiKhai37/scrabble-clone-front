@@ -1,5 +1,5 @@
 import React from 'react';
-import Cell from './Cell';
+import GridCell from './GridCell';
 
 const GameGrid = ({ letters }) => {
 
@@ -13,7 +13,7 @@ const GameGrid = ({ letters }) => {
                 <td key={x} style={{ border: '1px' }}>
                   {row.map((letter, y) => {
                     return (
-                      <Cell className='cell' id={`cell-${x}-${y}`} letter={letter} coords={[x, y]} key={[x,y]}  />
+                      <GridCell className='cell' id={`cell-${x}-${y}`} letter={letter} coords={[x, y]} key={[x,y]}  />
                     )
                   })}
                 </td>
