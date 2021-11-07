@@ -11,6 +11,12 @@ const SignUpPage = () => {
   const [errorMsg, setErrorMsg] = useState('');
 
   const onFinish = async (values) => {
+
+    if (values.confirmation !== values.password) {
+      setErrorMsg('Password and confirmation do not match');
+      return;
+    }
+
     const user = {
       email: values.email,
       username: values.username,
