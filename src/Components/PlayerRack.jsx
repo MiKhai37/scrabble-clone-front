@@ -1,12 +1,12 @@
 import React from 'react';
 import LetterTile from './LetterTile';
 
-const PlayerRack = ({ letters }) => {
+const PlayerRack = ({ children }) => {
 
   return (
     <div style={{ display: 'flex', margin: 30, border: '1px solid black', justifyContent: 'center' }}>
-      {letters.map((letter, i) => {
-        return <LetterTile classname='tile' letter={letter} tileId={i} key={i} />
+      {children.map((letter, i) => {
+        return <LetterTile classname='tile' tileId={i} key={i}>{letter}</LetterTile>
       })}
     </div>
   )

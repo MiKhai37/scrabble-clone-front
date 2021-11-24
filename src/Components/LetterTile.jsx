@@ -7,21 +7,19 @@ padding: 0;
 margin: 10px;
 height: 40px;
 width: 40px;
-border: 1px solid black;
+border: ${props => props.selected ? '3px solid black' : '1px solid black'};
 border-radius: 5px;
-`;
-// eslint-disable-next-line
-const SelectedTile = styled(Tile)`
-border: 2px solid black;
+color: ${props => props.used ? 'white' : 'black'}
 `;
 
 
-const LetterTile = ({ letter, tileId }) => {
+
+const LetterTile = ({ children, tileId }) => {
 
   return (
     <>
-      <Tile className='tile' id={tileId}>
-      <CenteredLetter letter={letter} />
+      <Tile className='tile' id={tileId} >
+      <CenteredLetter>{children}</CenteredLetter>
       </Tile>
     </>
   )

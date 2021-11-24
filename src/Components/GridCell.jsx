@@ -14,7 +14,7 @@ const GridCell = ({ letter, coords }) => {
 
   return (
     <>
-      <Cell className='cell' id={coords} letter={letter}>
+      <Cell className='cell' id={coords}>
         <CenteredLetter letter={letter} />
       </Cell>
     </>
